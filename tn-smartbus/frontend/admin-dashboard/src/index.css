@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(53, 211, 153, 0.06), transparent),
+    #0B1220;
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #121A2E; }
+::-webkit-scrollbar-thumb { background: #232E47; border-radius: 4px; }
+
+/* Split-flap style digit reveal for the live stat numbers - the dashboard's signature motion */
+@keyframes flapIn {
+  0% { opacity: 0; transform: translateY(-6px); filter: blur(2px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+.flap-in { animation: flapIn 0.4s ease-out; }
+
+.pulse-dot {
+  box-shadow: 0 0 0 0 rgba(53, 211, 153, 0.6);
+  animation: pulseRing 2s infinite;
+}
+@keyframes pulseRing {
+  0% { box-shadow: 0 0 0 0 rgba(53, 211, 153, 0.5); }
+  70% { box-shadow: 0 0 0 8px rgba(53, 211, 153, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(53, 211, 153, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flap-in, .pulse-dot { animation: none; }
+}
